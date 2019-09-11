@@ -1,0 +1,22 @@
+version: '3'
+services:
+  web:
+    image: hitalos/laravel:latest
+    ports:
+      - 80
+    volumes:
+      - ./:/var/www
+    links:
+      - db
+    environment:
+      DB_HOST: db
+      DB_DATABASE: estoque
+      DB_USERNAME: username
+      DB_PASSWORD: teste
+      DB_CONNECTION: pgsql
+  db:
+    image: postgres
+    environment:
+      POSTGRES_DB: estoque
+      POSTGRES_USER: username
+      POSTGRES_PASSWORD: teste
