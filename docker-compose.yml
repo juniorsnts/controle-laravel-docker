@@ -1,15 +1,12 @@
 version: '3'
 services:
-  db:
-    image: mysql:5.7
-    volumes:
-      - dbdata:/var/lib/mysql
+  image: postgres
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: example
-      MYSQL_DATABASE: homestead
+      POSTGRES_DB: homestead
+      POSTGRES_PASSWORD: example
     ports:
-      - 3306:3306
+      - 5432
   app:
     image: juniorsntsid/laravelapp:v1
     build: 
@@ -18,9 +15,9 @@ services:
     working_dir: /var/www
     env_file: '.env'
     environment: 
-      DB_CONNECTION: mysql
+      DB_CONNECTION: pgsql
       DB_HOST: db
-      DB_PORT: 3306
+      DB_PORT: 5432
       DB_DATABASE: homestead
       REDIS_HOST: cache
     links:
