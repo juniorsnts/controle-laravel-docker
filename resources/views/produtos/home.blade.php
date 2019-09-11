@@ -25,7 +25,9 @@
                             <td>{{ $p->categoria->nome }}</td>
                             <td>R$ {{ $p->valor }}</td>
                             <td>{{ $p->quantidade }}</td>
-                            <td>{{ $p->data_validade }}</td>
+                            <td>{{ $p->data_validade }}
+                            <p class="text-white bg-danger">{{$p->isVencido($p->data_validade)}}</p>
+                            </td>
                             <td>R$ {{ floatVal($p->totalValor(floatVal($p->valor), $p->quantidade)) }}</td>
                             <td class="d-flex justify-content-center align-items-center">
                                 <div class="d-flex flex-row">
