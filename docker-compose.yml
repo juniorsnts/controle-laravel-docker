@@ -25,6 +25,7 @@ services:
       REDIS_HOST: cache
     ports:
       - 9000
+      - 8000
     links:
       - db
     depends_on: 
