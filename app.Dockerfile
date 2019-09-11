@@ -22,4 +22,4 @@ RUN chown -R www-data:www-data \
 
 RUN php artisan key:generate
 RUN php artisan config:cache
-RUN php artisan optimize
+RUN php artisan optimize:clear
