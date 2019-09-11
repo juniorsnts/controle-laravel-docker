@@ -1,6 +1,7 @@
 version: '3'
 services:
-  image: postgres
+  db:
+    image: postgres
     restart: always
     environment:
       POSTGRES_DB: homestead
