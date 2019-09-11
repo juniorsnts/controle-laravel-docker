@@ -23,12 +23,20 @@ services:
       DB_PORT: 3306
       DB_DATABASE: homestead
       REDIS_HOST: cache
-    ports:
-      - 9000
-      - 8000
     links:
       - db
     depends_on: 
       - db
+  web:
+    image: juniorsntsid/laravelweb:v1
+    build: 
+      context: .
+      dockerfile: web.Dockerfile
+    ports:
+      - 8080:80
+    links: 
+      - app  
+  cache:
+    image: redis:3.0-alpine
 volumes:
   dbdata: 
