@@ -1,4 +1,4 @@
-FROM shakyshane/laravel-php:latest
+FROM jguyomard/laravel-php:7.3
 
 COPY composer.lock /var/www
 
