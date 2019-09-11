@@ -1,6 +1,6 @@
 FROM shakyshane/laravel-php:latest
 
-RUN apt purge php7.1* && sudo add-apt-repository ppa:ondrej/php \
+RUN add-apt-repository ppa:ondrej/php \
 apt update && apt install php7.2 php7.2-common php7.2-cli php7.2-fpm
 
 COPY composer.lock /var/www
