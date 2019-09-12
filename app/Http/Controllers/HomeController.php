@@ -74,7 +74,7 @@ class HomeController extends Controller
     public function vencidos()
     {
         $data_atual = \Carbon\Carbon::now();    
-        $produtos_vencidos = Estoque::where('data_validade', '>=', $data_atual)->count('id');
+        $produtos_vencidos = Estoque::where('data_validade', '<=', $data_atual)->paginate(10);
         return view('produtos.vencidos', compact(['produtos_vencidos']));
     }
 }

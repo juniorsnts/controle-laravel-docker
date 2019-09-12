@@ -12,20 +12,20 @@
                         <th scope="col">Categoria</th>
                         <th scope="col">Valor</th>
                         <th scope="col">Estoque</th>
-                        <th scope="col text-danger">Data de validade</th>
+                        <th scope="col">Data de validade</th>
                         <th scope="col">Total</th>
                         <th scope="col">Açoes</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ( $produtos_vencidos as $p )
+                    @foreach($produtos_vencidos as $p)
                         <tr>
                             <th scope="row">{{ $p->id }}</th>
                             <td>{{ $p->nome_produto }}</td>
                             <td>{{ $p->categoria->nome }}</td>
                             <td>R$ {{ $p->valor }}</td>
                             <td>{{ $p->quantidade }}</td>
-                            <td>{{ $p->data_validade }}</td>
+                            <td class="text-danger font-weight-bold">{{ $p->data_validade }}</td>
                             <td>R$ {{ floatVal($p->totalValor(floatVal($p->valor), $p->quantidade)) }}</td>
                             <td class="d-flex justify-content-center align-items-center">
                                 <div class="d-flex flex-row">
@@ -45,7 +45,7 @@
             </table>
         </button>
         <div class="card-footer">
-            {{$produtos->links()}}
+            {{$produtos_vencidos->links()}}
         </div>
     </div>  
     <div class="fixed-bottom float-right d-flex justify-content-end m-3">
