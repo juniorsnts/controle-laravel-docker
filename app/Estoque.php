@@ -29,7 +29,7 @@ class Estoque extends Model
     public function total($valor, $quantidade){
         $total = $valor * $quantidade;
         $total_geral = $total;
-        $total_geral += $total_geral;
+        $total_geral += $total;
         return $total_geral;
     }
 }

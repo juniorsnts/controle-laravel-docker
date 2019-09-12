@@ -10,7 +10,7 @@
             @csrf
             <div class="form-group">
                 <label>Nome do produto</label>
-                <input class="form-control" name="nome_produto" placeholder="Nome">
+                <input onkeyup="this.value = this.value.toUpperCase()" class="form-control" name="nome_produto" placeholder="Nome">
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Categoria</label>

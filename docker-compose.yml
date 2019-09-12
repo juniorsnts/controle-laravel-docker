@@ -20,6 +20,7 @@ services:
       DB_HOST: db
       DB_PORT: 5432
       DB_DATABASE: homestead
+      DB_PASSWORD: example
       REDIS_HOST: cache
     links:
       - db

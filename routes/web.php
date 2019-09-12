@@ -10,3 +10,4 @@ Route::resource('/home', 'HomeController');
 Route::resource('/categoria', 'CategoriaController');
 Route::get('/caixa', 'CaixaController@index')->name('caixa.index');
 Route::resource('/saida', 'SaidaController');
+Route::get('/home/vencidos', 'HomeController@vencidos')->name('home.vencidos');

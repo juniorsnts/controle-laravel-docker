@@ -16,14 +16,19 @@ class CaixaController extends Controller
      */
     public function index()
     {
-        $produtos = Estoque::all();
-        $saidas = Saida::all();
-        $valor_total = DB::table('estoques')->sum('valor');
-        $quantidade_total = DB::table('estoques')->sum('quantidade');
-        $quantidade_total_saida = DB::table('saidas')->sum('quantidade_saida');
-        $total = $valor_total * $quantidade_total;
-        $total_saida = $valor_total * $quantidade_total_saida;
-        return view('caixa.index', compact(['produtos', 'total', 'saidas', 'total_saida']));
+        $produtos = Estoque::query()->orderBy('created_at')->get();
+        $saidas = Saida::query()->orderBy('created_at')->get();
+        $total_entrada = intVal(0);
+        $total_saida = intVal(0);
+        foreach($produtos as $p){
+            $total = $p->valor * $p->quantidade;
+            $total_entrada += $total;
+        }
+        foreach($saidas as $s){
+            $total_s = $s->produto->valor * $s->quantidade_saida;
+            $total_saida += $total_s;
+        }
+        return view('caixa.index', compact(['produtos', 'total_entrada', 'saidas', 'total_saida']));
     }
 
     /**

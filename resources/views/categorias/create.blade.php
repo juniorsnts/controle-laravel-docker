@@ -10,7 +10,7 @@
             @csrf
             <div class="form-group">
                 <label>Nome da categoria</label>
-                <input class="form-control" name="nome" placeholder="Nome">
+                <input onkeyup="this.value = this.value.toUpperCase()" class="form-control" name="nome" placeholder="Nome">
             </div>
             <button type="submit" class="btn btn-success">Cadastrar</button>
             <a class="ml-3 btn btn-danger text-white" href="{{route('home.index')}}">Voltar</a>

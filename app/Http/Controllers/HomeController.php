@@ -15,8 +15,11 @@ class HomeController extends Controller
     }
     public function index()
     {
-        $produtos = Estoque::paginate(10);
-        return view('produtos.home', compact(['produtos']));
+        $data_atual = \Carbon\Carbon::now();
+        $produtos = Estoque::query()->orderBy('created_at', 'desc')->paginate(10);
+        $produtos_vencidos = Estoque::where('data_validade', '>=', $data_atual)->count('id');
+        $produtos_perto_venc = Estoque::where('data_validade', '=', '2019-09-28')->count('id');
+        return view('produtos.home', compact(['produtos', 'produtos_vencidos', 'produtos_perto_venc']));
     }
 
     public function create()
@@ -66,5 +69,12 @@ class HomeController extends Controller
         $produto = Estoque::find($id);
         $produto->delete();
         return redirect('/');
+    }
+
+    public function vencidos()
+    {
+        $data_atual = \Carbon\Carbon::now();    
+        $produtos_vencidos = Estoque::where('data_validade', '>=', $data_atual)->count('id');
+        return view('produtos.vencidos', compact(['produtos_vencidos']));
     }
 }

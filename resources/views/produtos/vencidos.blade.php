@@ -2,11 +2,6 @@
 
 @section('content')
 <div class="container pt-3">
-    @if (intVal($produtos_vencidos) > 1)
-    <div class="alert alert-danger" role="alert">
-        Voce tem <a href="{{route('home.vencidos')}}">{{$produtos_vencidos}} produtos</a> vencidos
-    </div>        
-    @endif
     <div class="card text-center">
         <div class="card-body p-0">
             <table class="table table-striped">
@@ -17,13 +12,13 @@
                         <th scope="col">Categoria</th>
                         <th scope="col">Valor</th>
                         <th scope="col">Estoque</th>
-                        <th scope="col">Data de validade</th>
+                        <th scope="col text-danger">Data de validade</th>
                         <th scope="col">Total</th>
                         <th scope="col">Açoes</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ( $produtos as $p )
+                    @foreach ( $produtos_vencidos as $p )
                         <tr>
                             <th scope="row">{{ $p->id }}</th>
                             <td>{{ $p->nome_produto }}</td>
