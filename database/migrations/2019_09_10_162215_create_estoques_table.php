@@ -20,7 +20,7 @@ class CreateEstoquesTable extends Migration
             $table->decimal('valor');
             $table->integer('quantidade');
             $table->date('data_validade');
-            $table->foreign('categoria_id')->references('id')->on('categorias');
+            $table->foreign('categoria_id')->references('id')->on('categorias')->onDelete('cascade');
             $table->timestamps();
         });
     }
