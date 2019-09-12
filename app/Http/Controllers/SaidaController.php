@@ -37,7 +37,9 @@ class SaidaController extends Controller
      */
     public function store(Request $request)
     {
-        var_dump($request->all());
+        $produto = Estoque::find($request->produto_id);
+        $produto->quantidade = intVal($produto->quantidade) - intVal($request->quantidade_saida);
+        $produto->save();
         $saida = new Saida;
         $saida->produto_id = $request->produto_id;
         $saida->quantidade_saida = $request->quantidade_saida;
