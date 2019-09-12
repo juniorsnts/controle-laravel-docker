@@ -7,6 +7,11 @@
         Voce tem <a href="{{route('home.vencidos')}}">{{$produtos_vencidos}} produtos</a> vencidos
     </div>        
     @endif
+    @if (intVal($produtos_perto_venc) >= 1)
+    <div class="alert alert-warning" role="alert">
+        Voce tem <a href="{{route('home.quase_vencidos')}}">{{$produtos_perto_venc}} produtos</a> prestes a vencer
+    </div>        
+    @endif
     <div class="card text-center">
         <div class="card-body p-0">
             <table class="table table-striped">

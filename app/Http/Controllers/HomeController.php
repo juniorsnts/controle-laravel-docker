@@ -16,9 +16,10 @@ class HomeController extends Controller
     public function index()
     {
         $data_atual = \Carbon\Carbon::now();
+        $data_diff = \Carbon\Carbon::parse('+2 day');
         $produtos = Estoque::query()->orderBy('created_at', 'desc')->paginate(10);
         $produtos_vencidos = Estoque::where('data_validade', '<=', $data_atual)->count('id');
-        $produtos_perto_venc = Estoque::where('data_validade', '=', '2019-09-28')->count('id');
+        $produtos_perto_venc = Estoque::where('data_validade', '>=', $data_atual)->where('data_validade', '<', $data_diff)->count('id');
         return view('produtos.home', compact(['produtos', 'produtos_vencidos', 'produtos_perto_venc']));
     }
 
@@ -77,6 +78,14 @@ class HomeController extends Controller
         $produtos_vencidos = Estoque::where('data_validade', '<=', $data_atual)->paginate(10);
         return view('produtos.vencidos', compact(['produtos_vencidos']));
     }
+    public function quase_vencidos()
+    {
+        $data_atual = \Carbon\Carbon::now();    
+        $data_diff = \Carbon\Carbon::parse('+2 day');
+        $produtos_vencidos = Estoque::where('data_validade', '>=', $data_atual)->where('data_validade', '<', $data_diff)->paginate(10);
+        return view('produtos.vencidos', compact(['produtos_vencidos']));
+    }
+    
     public function generatePDF()
     {
         $produtos = Estoque::all();

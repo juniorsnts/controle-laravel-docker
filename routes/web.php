@@ -7,6 +7,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home/vencidos', 'HomeController@vencidos')->name('home.vencidos');
+Route::get('/home/quase_vencidos', 'HomeController@quase_vencidos')->name('home.quase_vencidos');
 Route::get('/home/relatorioPDF', 'HomeController@generatePDF')->name('home.relatorio');
 Route::resource('/home', 'HomeController');
 Route::resource('/categoria', 'CategoriaController');
