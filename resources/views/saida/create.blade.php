@@ -20,16 +20,6 @@
                     <label>Quantidade da saida</label>
                     <input type="number" name="quantidade_saida" class="form-control" placeholder="Quantidade">
                 </div>
-                <div class="d-flex flex-row">
-                    <div class="form-group col-4 p-0">
-                        <label>No estoque</label>
-                        <input disabled type="number" value="{{$p->quantidade}}" class="form-control" placeholder="Quantidade">
-                    </div>
-                    <div class="form-group col-4 p-0 ml-4">
-                        <label>Valor</label>
-                        <input disabled type="number" value="{{$p->valor}}" class="form-control" placeholder="Quantidade">
-                    </div>
-                </div>
                 <button type="submit" class="btn btn-success">Cadastrar</button>
                 <a class="ml-3 btn btn-danger text-white" href="{{route('home.index')}}">Voltar</a>
             </form>
