@@ -77,4 +77,9 @@ class HomeController extends Controller
         $produtos_vencidos = Estoque::where('data_validade', '<=', $data_atual)->paginate(10);
         return view('produtos.vencidos', compact(['produtos_vencidos']));
     }
+    public function generatePDF()
+    {
+        $produtos = Estoque::all();
+        return \PDF::loadView('produtos.relatorio', compact('produtos'))->setPaper('a4', 'landscape')->download('relatorio.pdf');
+    }
 }

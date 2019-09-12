@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container pt-3">
-    @if (intVal($produtos_vencidos) >= 0)
+    @if (intVal($produtos_vencidos) >= 1)
     <div class="alert alert-danger" role="alert">
         Voce tem <a href="{{route('home.vencidos')}}">{{$produtos_vencidos}} produtos</a> vencidos
     </div>        
