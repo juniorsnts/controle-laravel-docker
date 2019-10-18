@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 services:
   db:
     image: postgres
@@ -10,12 +10,12 @@ services:
       - 5432
   app:
     image: juniorsntsid/laravelapp:v1
-    build: 
+    build:
       context: .
       dockerfile: app.Dockerfile
     working_dir: /var/www
-    env_file: '.env'
-    environment: 
+    env_file: ".env"
+    environment:
       DB_CONNECTION: pgsql
       DB_HOST: db
       DB_PORT: 5432
@@ -24,18 +24,18 @@ services:
       REDIS_HOST: cache
     links:
       - db
-    depends_on: 
+    depends_on:
       - db
   web:
     image: juniorsntsid/laravelweb:v1
-    build: 
+    build:
       context: .
       dockerfile: web.Dockerfile
     ports:
       - 8080:80
-    links: 
-      - app  
+    links:
+      - app
   cache:
     image: redis:3.0-alpine
 volumes:
-  dbdata: 
+  dbdata:
